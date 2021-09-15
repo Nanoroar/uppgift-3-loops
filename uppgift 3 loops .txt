@@ -1,0 +1,72 @@
+3. Skapa ett program där användaren
+a. Får mata in två tal.
+b. Skriv sedan till skärmen summan av de två talen.
+c. Skriv sedan en fråga- Vill du fortsätta(J/N)?.
+d. Svarar användaren J återupprepas punkt a-c
+e. Svarar användaren N avbryts programmeusing System;
+
+________________________Svar____________________________
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace test
+{
+    class Program
+    {
+       
+        static void Main(string[] args)
+        {
+            for(; ; )
+            {
+                Console.WriteLine("Enter first integer Number");
+                string fNumber = Console.ReadLine();
+
+                Console.WriteLine("Enter second interger Number");
+                string sNumber = Console.ReadLine();
+
+                double firstNumber, secondNumber;
+
+                bool isNumeric1 = double.TryParse(fNumber, out firstNumber);
+                bool isNumeric2 = double.TryParse(sNumber, out secondNumber);
+
+
+                if (isNumeric1 & isNumeric2)
+                {
+                    Console.WriteLine("Total is: " + (firstNumber + secondNumber));
+                    var result = MessageBox.Show("Do you want to continue?", "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        Console.WriteLine("_______________________________________");
+                        continue;
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        var result2 = MessageBox.Show("Are you sure you want to Exit?", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        if (result2 == DialogResult.OK)
+                            break;
+                        else if (result2 == DialogResult.Cancel)
+                            Console.WriteLine("__________________________________________");
+                    }
+                    else
+                        Console.WriteLine("_______________________________________"); continue;
+                }else
+                {
+                    Console.WriteLine("Invalid input, please enter intege values and try again!");
+                    Console.WriteLine("_______________________________________"); 
+                }
+                                
+            }
+           
+
+            //Console.WriteLine();
+            
+
+                //Console.ReadKey();
+
+        }
+    }
+}
